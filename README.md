@@ -1,1 +1,1 @@
-# GC-mark-sweep-
+# Garbage collector(mark-sweep)

@@ -47,6 +47,7 @@ typedef struct
     int maxObjects;
 } VM;
 
+
 void assert(int condition, const char *message)
 {
     if (!condition)

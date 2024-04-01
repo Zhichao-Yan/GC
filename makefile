@@ -1,4 +1,4 @@
-BIN=markandsweep
+BIN=main
 
 .PHONY : clean 
 

@@ -105,6 +105,7 @@ void markAll(VM *vm)
 
 void sweep(VM *vm)
 {
+    /* 注意是如何删除unreached的节点的，值得参考 */
     Object **object = &vm->firstObject;
     while (*object)
     {
@@ -262,6 +263,21 @@ void test4()
     assert(vm->numObjects == 4, "Should have collected objects.");
     freeVM(vm);
 }
+void test5()
+{
+    printf("Test 5: small test.\n");
+    VM *vm = newVM();
+    pushInt(vm, 1);
+    pushInt(vm, 2);
+    pushInt(vm, 3);
+    pushInt(vm, 4);
+    pop(vm);
+    pushInt(vm, 5);
+    pushInt(vm, 6);
+    pop(vm);
+    gc(vm);
+    freeVM(vm);
+}
 
 void perfTest()
 {
@@ -289,6 +305,7 @@ int main(int argc, const char *argv[])
     test2();
     test3();
     test4();
+    test5();
     perfTest();
     return 0;
 }
